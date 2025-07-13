@@ -6,8 +6,11 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  SafeAreaView,
+  Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
+import { HeaderTitle } from '@react-navigation/elements';
 
 const listings = [
   {
@@ -54,25 +57,40 @@ export default function MarketplaceScreen() {
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Marketplace</Text>
-      <FlatList
-        data={listings}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={{ paddingBottom: 16 }}
-      />
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Marketplace</Text>
+      </View>
+      
+      <View style={styles.container}>
+        <FlatList
+          data={listings}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: 16 }}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#FFF",
+    paddingTop: Platform.OS === "android" ? 40 : 0,
+  },
   container: {
     flex: 1,
     padding: 16,
     backgroundColor: '#fff',
   },
   header: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 15,
+  },
+  headerTitle: {
     fontSize: 24,
     fontWeight: '600',
     marginBottom: 16,
@@ -83,6 +101,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     overflow: 'hidden',
     elevation: 2,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
   },
   image: {
     width: '100%',

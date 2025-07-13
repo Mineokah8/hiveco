@@ -6,9 +6,9 @@ export default function Index() {
 
   // If logged in, go to home
   if (user) {
-    return <Redirect href="/home" />;
+    return <Redirect href="/login" />;
   }
 
   // Otherwise, go to login
-  return <Redirect href="/login" />;
+  return <Redirect href="/home" />;
 }
