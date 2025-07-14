@@ -11,6 +11,7 @@ export default function AppTabs() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
+          headerShown: false, // Hide header for home screen
         }}
       />
       <Tabs.Screen
@@ -20,6 +21,7 @@ export default function AppTabs() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="pricetags-outline" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen
@@ -38,6 +40,7 @@ export default function AppTabs() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-outline" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
     </Tabs>
